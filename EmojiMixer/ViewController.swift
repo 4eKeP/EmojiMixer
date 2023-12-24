@@ -30,6 +30,8 @@ final class ViewController: UIViewController {
         setupConstraints()
         collectionView.allowsMultipleSelection = false
         setNavigationBar()
+        emojiMixStore.delegate = self
+        visibleEmoji = emojiMixStore.emojiMixes
     }
     
     private func setupView() {
@@ -70,12 +72,36 @@ extension ViewController: UICollectionViewDataSource {
     
     @objc private func addEmoji() {
         let newMix = emojiFactory.makeNewMix()
-        
-        let newMixIndex = visibleEmoji.count
-        visibleEmoji.append(newMix)
-        
+        try! emojiMixStore.addNewEmojiMix(newMix)
+//        let newMixIndex = visibleEmoji.count
+//        try! emojiMixStore.addNewEmojiMix(newMix)
+//        visibleEmoji = try! emojiMixStore.fetchEmojiMixes()
+//        
+//        collectionView.performBatchUpdates {
+//            collectionView.insertItems(at: [IndexPath(item: newMixIndex, section: 0)])
+//        }
+    }
+}
+
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+}
+
+extension ViewController: EmojiMixStoreDelegate {
+    func store(_ store: EmojiMixStore, didUpdate update: EmojiMixStoreUpdate) {
+        visibleEmoji = emojiMixStore.emojiMixes
         collectionView.performBatchUpdates {
-            collectionView.insertItems(at: [IndexPath(item: newMixIndex, section: 0)])
+            let insertedIndexes = update.insertedIndexes.map { IndexPath(item: $0, section: 0) }
+            let deletedIndexes = update.deletedIndexes.map { IndexPath(item: $0, section: 0) }
+            let updatedIndexes = update.updatedIndexes.map { IndexPath(item: $0, section: 0) }
+            collectionView.insertItems(at: insertedIndexes)
+            collectionView.insertItems(at: deletedIndexes)
+            collectionView.insertItems(at: updatedIndexes)
+            for move in update.movedIndexes {
+                collectionView.moveItem(at: IndexPath(item: move.oldIndex, section: 0),
+                                        to: IndexPath(item: move.newIndex, section: 0))
+            }
         }
     }
 }

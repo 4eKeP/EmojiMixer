@@ -29,15 +29,15 @@ final class EmojiMixFactory {
     
     private func makeColor(_ emojies: (String, String, String)) -> UIColor {
         
-            func cgfload256(_ t: String) -> CGFloat {
-                let value = t.unicodeScalars.reduce(Int(0)) { r, t in
-                    return r + Int(t.value)
-                }
-                return CGFloat(value % 128) / 255.0 + 0.25
+        func cgfload256(_ t: String) -> CGFloat {
+            let value = t.unicodeScalars.reduce(Int(0)) { r, t in
+                return r + Int(t.value)
             }
-        return UIColor(red: cgfload256(emojies.0),
-                           green: cgfload256(emojies.0),
-                           blue: cgfload256(emojies.0),
-                           alpha: 1)
+            return CGFloat(value % 128) / 255.0 + 0.25
         }
+        return UIColor(red: cgfload256(emojies.0),
+                       green: cgfload256(emojies.0),
+                       blue: cgfload256(emojies.0),
+                       alpha: 1)
+    }
 }
