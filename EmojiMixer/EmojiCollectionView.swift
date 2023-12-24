@@ -24,5 +24,8 @@ final class EmpjiCollectionViewCell: UICollectionViewCell {
             titleLable.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             titleLable.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+        
+        contentView.layer.cornerRadius = 10.0
+        contentView.layer.masksToBounds = true
     }
 }

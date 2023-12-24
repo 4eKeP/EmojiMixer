@@ -9,14 +9,17 @@ import UIKit
 
 final class ViewController: UIViewController {
     
-    private let emojis = [ "🍇", "🍈", "🍉", "🍊", "🍋", "🍌", "🍍", "🥭", "🍎", "🍏", "🍐", "🍒", "🍓", "🫐", "🥝", "🍅", "🫒", "🥥", "🥑", "🍆", "🥔", "🥕", "🌽", "🌶️", "🫑", "🥒", "🥬", "🥦", "🧄", "🧅", "🍄"]
+    //    private let emojis = [ "🍇", "🍈", "🍉", "🍊", "🍋", "🍌", "🍍", "🥭", "🍎", "🍏", "🍐", "🍒", "🍓", "🫐", "🥝", "🍅", "🫒", "🥥", "🥑", "🍆", "🥔", "🥕", "🌽", "🌶️", "🫑", "🥒", "🥬", "🥦", "🧄", "🧅", "🍄"]
     
-    private var visibleEmoji: [String] = []
-
+    private let emojiFactory = EmojiMixFactory()
+    private let emojiMixStore = EmojiMixStore()
+    
+    private var visibleEmoji: [EmojiMix] = []
+    
     private let cellIdentifier = "cell"
     
-    var collectionView: UICollectionView = {
-       let layout = UICollectionViewFlowLayout()
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
@@ -28,11 +31,12 @@ final class ViewController: UIViewController {
         collectionView.allowsMultipleSelection = false
         setNavigationBar()
     }
-
+    
     private func setupView() {
         collectionView.register(EmpjiCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -55,7 +59,9 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? EmpjiCollectionViewCell
         
-        cell?.titleLable.text = visibleEmoji[indexPath.row]
+        let emojiMix = visibleEmoji[indexPath.row]
+        cell?.titleLable.text = emojiMix.emojies
+        cell?.contentView.backgroundColor = emojiMix.backgroundColor
         guard let cell = cell else {
             print("Не получилось создать ячейку")
             return UICollectionViewCell() }
@@ -63,36 +69,43 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     @objc private func addEmoji() {
-        guard visibleEmoji.count < emojis.count else { return }
+        let newMix = emojiFactory.makeNewMix()
         
-        let nextEmojiIndex = visibleEmoji.count
-        visibleEmoji.append(emojis[nextEmojiIndex])
-        collectionView.performBatchUpdates {
-            collectionView.insertItems(at: [IndexPath(item: nextEmojiIndex, section: 0)])
-        }
-    }
-    
-    @objc private func removeEmoji() {
-        guard visibleEmoji.count > 0 else { return }
+        let newMixIndex = visibleEmoji.count
+        visibleEmoji.append(newMix)
         
-        let lastEmojiIndex = visibleEmoji.count - 1
-        visibleEmoji.removeLast()
         collectionView.performBatchUpdates {
-            collectionView.deleteItems(at: [IndexPath(item: lastEmojiIndex, section: 0)])
+            collectionView.insertItems(at: [IndexPath(item: newMixIndex, section: 0)])
         }
     }
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+//    @objc private func removeEmoji() {
+//        guard visibleEmoji.count > 0 else { return }
+//
+//        let lastEmojiIndex = visibleEmoji.count - 1
+//        visibleEmoji.removeLast()
+//        collectionView.performBatchUpdates {
+//            collectionView.deleteItems(at: [IndexPath(item: lastEmojiIndex, section: 0)])
+//        }
+//    }
+//}
 
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    
     // задается рамер ячейки
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width / 2, height: 50)
+        let insets = collectionView.contentInset
+        let availableWidth = collectionView.bounds.width - insets.left - insets.right
+        let minSpacing = 10.0
+        let itemsPerRow = 2.0
+        let itemWidth = (availableWidth - (itemsPerRow - 1) * minSpacing)  / itemsPerRow
+        return CGSize(width: itemWidth, height: itemWidth)
     }
     
     //задаеться растояние между ячейками
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 10
     }
 }
 
@@ -102,16 +115,16 @@ extension ViewController {
     
     func setNavigationBar() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plus))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .undo, target: self, action: #selector(undo))
+        //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .undo, target: self, action: #selector(undo))
     }
     
     @objc func plus() {
         addEmoji()
     }
     
-    @objc func undo() {
-        removeEmoji()
-    }
+    //    @objc func undo() {
+    //        removeEmoji()
+    //    }
     
 }
 
