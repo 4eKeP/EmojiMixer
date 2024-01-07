@@ -10,6 +10,24 @@ import UIKit
 final class EmpjiCollectionViewCell: UICollectionViewCell {
     let titleLable = UILabel()
     
+    var viewModel: EmojiMixViewModel! {
+        didSet {
+            titleLable.text = viewModel.emojis
+            contentView.backgroundColor = viewModel.backgroundColor
+            viewModelEmpjiObserver = viewModel.observe(\.emojis, options: [.new], changeHandler: { [weak self] _, change in
+                guard let new = change.newValue else { return }
+                self?.titleLable.text = new
+            })
+            viewModelBackgroundColorObserver = viewModel.observe(\.backgroundColor, options: [.new], changeHandler: { [weak self] _, change in
+                guard let new = change.newValue else { return }
+                self?.contentView.backgroundColor = new
+            })
+        }
+    }
+    
+    private var viewModelEmpjiObserver: NSObject?
+    private var viewModelBackgroundColorObserver: NSObject?
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -27,5 +45,10 @@ final class EmpjiCollectionViewCell: UICollectionViewCell {
         
         contentView.layer.cornerRadius = 10.0
         contentView.layer.masksToBounds = true
+    }
+    
+    override func prepareForReuse() {
+         viewModelEmpjiObserver = nil
+        viewModelBackgroundColorObserver = nil
     }
 }

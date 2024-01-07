@@ -11,8 +11,8 @@ final class ViewController: UIViewController {
     
     //    private let emojis = [ "🍇", "🍈", "🍉", "🍊", "🍋", "🍌", "🍍", "🥭", "🍎", "🍏", "🍐", "🍒", "🍓", "🫐", "🥝", "🍅", "🫒", "🥥", "🥑", "🍆", "🥔", "🥕", "🌽", "🌶️", "🫑", "🥒", "🥬", "🥦", "🧄", "🧅", "🍄"]
     
-    private let emojiFactory = EmojiMixFactory()
-    private let emojiMixStore = EmojiMixStore()
+  //  private let emojiFactory = EmojiMixFactory()
+ //   private let emojiMixStore = EmojiMixStore()
     
     private var visibleEmoji: [EmojiMix] = []
     

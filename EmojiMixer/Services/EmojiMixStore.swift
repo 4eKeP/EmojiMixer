@@ -26,7 +26,7 @@ struct EmojiMixStoreUpdate{
 }
 
 protocol EmojiMixStoreDelegate: AnyObject {
-    func store(_ store: EmojiMixStore, didUpdate update: EmojiMixStoreUpdate)
+    func storeDidUpdate(_ store: EmojiMixStore)
 }
 
 final class EmojiMixStore: NSObject {
@@ -41,12 +41,13 @@ final class EmojiMixStore: NSObject {
     private var updatedIndexes: IndexSet?
     private var movedIndexes: Set<EmojiMixStoreUpdate.Move>?
     
-    var emojiMixes: [EmojiMix] {
-        guard
-            let object = self.fetchResultsController.fetchedObjects,
-            let emojiMixes = try? object.map({ try self.emojiMix(from: $0) })
-        else {return []}
-        return emojiMixes
+    var emojiMixes: [EmojisMixCoreData] {
+//        guard
+//            let object = self.fetchResultsController.fetchedObjects,
+//            let emojiMixes = try? object.map({ try self.emojiMix(from: $0) })
+//        else {return []}
+//        return emojiMixes
+        return self.fetchResultsController.fetchedObjects ?? []
     }
     
     convenience override init() {
@@ -83,6 +84,14 @@ final class EmojiMixStore: NSObject {
     func updateExistingEmojiMix(_ emojiMixCoreData: EmojisMixCoreData, with mix: EmojiMix) {
         emojiMixCoreData.emojies = mix.emojies
         emojiMixCoreData.colorHex = uiColorMarshalling.hexString(from: mix.backgroundColor)
+    }
+    
+    func deleteAll() throws {
+        let objects = fetchResultsController.fetchedObjects ?? []
+        for object in objects {
+            context.delete(object)
+        }
+        try context.save()
     }
     
 //    func fetchEmojiMixes() throws -> [EmojiMix] {
