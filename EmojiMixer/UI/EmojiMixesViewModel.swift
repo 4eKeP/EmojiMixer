@@ -7,9 +7,17 @@
 
 import UIKit
 
-@objcMembers
+//@objcMembers
 final class EmojiMixesViewModel: NSObject {
-    private(set) dynamic var emojiMixes: [EmojiMixViewModel] = []
+    
+    var onChange: (() -> Void)?
+    
+    
+    private(set) var emojiMixes: [EmojiMixViewModel] = [] {
+        didSet {
+            onChange?()
+        }
+    }
     
     private let emojiMixStore: EmojiMixStore
     private let emojiMixFactory: EmojiMixFactory

@@ -15,7 +15,7 @@ final class ViewController: UIViewController {
     //   private let emojiMixStore = EmojiMixStore()
     
     private var viewModel: EmojiMixesViewModel!
-    private var viewModelObserver: NSObject?
+  //  private var viewModelObserver: NSObject?
     
    // private var visibleEmoji: [EmojiMix] = []
     
@@ -34,11 +34,12 @@ final class ViewController: UIViewController {
         collectionView.allowsMultipleSelection = false
         setNavigationBar()
         viewModel = EmojiMixesViewModel()
-        viewModelObserver = viewModel.observe(\.emojiMixes,
-                                               options: []) { [weak self] _, change in
-            guard let self = self else { return }
-            self.collectionView.reloadData()
-        }
+//        viewModelObserver = viewModel.observe(\.emojiMixes,
+//                                               options: []) { [weak self] _, change in
+//            guard let self = self else { return }
+//            self.collectionView.reloadData()
+//        }
+        viewModel.onChange = collectionView.reloadData
     }
     
     private func setupView() {

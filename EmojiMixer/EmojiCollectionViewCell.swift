@@ -10,18 +10,25 @@ import UIKit
 final class EmpjiCollectionViewCell: UICollectionViewCell {
     let titleLable = UILabel()
     
+//    var viewModel: EmojiMixViewModel! {
+//        didSet {
+//            titleLable.text = viewModel.emojis
+//            contentView.backgroundColor = viewModel.backgroundColor
+//            viewModelEmpjiObserver = viewModel.observe(\.emojis, options: [.new], changeHandler: { [weak self] _, change in
+//                guard let new = change.newValue else { return }
+//                self?.titleLable.text = new
+//            })
+//            viewModelBackgroundColorObserver = viewModel.observe(\.backgroundColor, options: [.new], changeHandler: { [weak self] _, change in
+//                guard let new = change.newValue else { return }
+//                self?.contentView.backgroundColor = new
+//            })
+//        }
+//    }
+    
     var viewModel: EmojiMixViewModel! {
         didSet {
             titleLable.text = viewModel.emojis
             contentView.backgroundColor = viewModel.backgroundColor
-            viewModelEmpjiObserver = viewModel.observe(\.emojis, options: [.new], changeHandler: { [weak self] _, change in
-                guard let new = change.newValue else { return }
-                self?.titleLable.text = new
-            })
-            viewModelBackgroundColorObserver = viewModel.observe(\.backgroundColor, options: [.new], changeHandler: { [weak self] _, change in
-                guard let new = change.newValue else { return }
-                self?.contentView.backgroundColor = new
-            })
         }
     }
     
