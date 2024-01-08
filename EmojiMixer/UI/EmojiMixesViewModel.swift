@@ -8,22 +8,23 @@
 import UIKit
 
 //@objcMembers
-final class EmojiMixesViewModel: NSObject {
+final class EmojiMixesViewModel {
     
-    var onChange: (() -> Void)?
+   // var onChange: (() -> Void)?
     
-    
-    private(set) var emojiMixes: [EmojiMixViewModel] = [] {
-        didSet {
-            onChange?()
-        }
-    }
+    @Observable
+    private(set) var emojiMixes: [EmojiMixViewModel] = []
+//    {
+//        didSet {
+//            onChange?()
+//        }
+//    }
     
     private let emojiMixStore: EmojiMixStore
     private let emojiMixFactory: EmojiMixFactory
     private let uiColorMarshalling = UIColorMarshalling()
     
-    override convenience init() {
+    convenience init() {
         let emojiMixStore = try! EmojiMixStore(
             context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         )
@@ -34,7 +35,7 @@ final class EmojiMixesViewModel: NSObject {
     init(emojiMixFactory: EmojiMixFactory, emojiMixStore: EmojiMixStore) {
         self.emojiMixFactory = emojiMixFactory
         self.emojiMixStore = emojiMixStore
-        super.init()
+      //  super.init()
         emojiMixStore.delegate = self
         emojiMixes = getEmojiMixesFromeStore()
     }
