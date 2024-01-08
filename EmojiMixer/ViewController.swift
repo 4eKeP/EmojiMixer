@@ -11,10 +11,13 @@ final class ViewController: UIViewController {
     
     //    private let emojis = [ "🍇", "🍈", "🍉", "🍊", "🍋", "🍌", "🍍", "🥭", "🍎", "🍏", "🍐", "🍒", "🍓", "🫐", "🥝", "🍅", "🫒", "🥥", "🥑", "🍆", "🥔", "🥕", "🌽", "🌶️", "🫑", "🥒", "🥬", "🥦", "🧄", "🧅", "🍄"]
     
-  //  private let emojiFactory = EmojiMixFactory()
- //   private let emojiMixStore = EmojiMixStore()
+    //  private let emojiFactory = EmojiMixFactory()
+    //   private let emojiMixStore = EmojiMixStore()
     
-    private var visibleEmoji: [EmojiMix] = []
+    private var viewModel: EmojiMixesViewModel!
+    private var viewModelObserver: NSObject?
+    
+   // private var visibleEmoji: [EmojiMix] = []
     
     private let cellIdentifier = "cell"
     
@@ -30,8 +33,12 @@ final class ViewController: UIViewController {
         setupConstraints()
         collectionView.allowsMultipleSelection = false
         setNavigationBar()
-        emojiMixStore.delegate = self
-        visibleEmoji = emojiMixStore.emojiMixes
+        viewModel = EmojiMixesViewModel()
+        viewModelObserver = viewModel.observe(\.emojiMixes,
+                                               options: []) { [weak self] _, change in
+            guard let self = self else { return }
+            self.collectionView.reloadData()
+        }
     }
     
     private func setupView() {
@@ -55,32 +62,32 @@ final class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        visibleEmoji.count
+        viewModel.emojiMixes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? EmpjiCollectionViewCell
-        
-        let emojiMix = visibleEmoji[indexPath.row]
-        cell?.titleLable.text = emojiMix.emojies
-        cell?.contentView.backgroundColor = emojiMix.backgroundColor
+        cell?.viewModel = viewModel.emojiMixes[indexPath.item]
+//        let emojiMix = visibleEmoji[indexPath.row]
+//        cell?.titleLable.text = emojiMix.emojies
+//        cell?.contentView.backgroundColor = emojiMix.backgroundColor
         guard let cell = cell else {
             print("Не получилось создать ячейку")
             return UICollectionViewCell() }
         return cell
     }
     
-    @objc private func addEmoji() {
-        let newMix = emojiFactory.makeNewMix()
-        try! emojiMixStore.addNewEmojiMix(newMix)
-//        let newMixIndex = visibleEmoji.count
+//    @objc private func addEmoji() {
+//        let newMix = emojiFactory.makeNewMix()
 //        try! emojiMixStore.addNewEmojiMix(newMix)
-//        visibleEmoji = try! emojiMixStore.fetchEmojiMixes()
-//        
-//        collectionView.performBatchUpdates {
-//            collectionView.insertItems(at: [IndexPath(item: newMixIndex, section: 0)])
-//        }
-    }
+        //        let newMixIndex = visibleEmoji.count
+        //        try! emojiMixStore.addNewEmojiMix(newMix)
+        //        visibleEmoji = try! emojiMixStore.fetchEmojiMixes()
+        //
+        //        collectionView.performBatchUpdates {
+        //            collectionView.insertItems(at: [IndexPath(item: newMixIndex, section: 0)])
+        //        }
+ //   }
 }
 
 extension ViewController: UICollectionViewDelegate {
@@ -88,23 +95,25 @@ extension ViewController: UICollectionViewDelegate {
     }
 }
 
-extension ViewController: EmojiMixStoreDelegate {
-    func store(_ store: EmojiMixStore, didUpdate update: EmojiMixStoreUpdate) {
-        visibleEmoji = emojiMixStore.emojiMixes
-        collectionView.performBatchUpdates {
-            let insertedIndexes = update.insertedIndexes.map { IndexPath(item: $0, section: 0) }
-            let deletedIndexes = update.deletedIndexes.map { IndexPath(item: $0, section: 0) }
-            let updatedIndexes = update.updatedIndexes.map { IndexPath(item: $0, section: 0) }
-            collectionView.insertItems(at: insertedIndexes)
-            collectionView.insertItems(at: deletedIndexes)
-            collectionView.insertItems(at: updatedIndexes)
-            for move in update.movedIndexes {
-                collectionView.moveItem(at: IndexPath(item: move.oldIndex, section: 0),
-                                        to: IndexPath(item: move.newIndex, section: 0))
-            }
-        }
-    }
-}
+//extension ViewController: EmojiMixStoreDelegate {
+
+//    func store(_ store: EmojiMixStore, didUpdate update: EmojiMixStoreUpdate) {
+//        visibleEmoji = emojiMixStore.emojiMixes
+//        collectionView.performBatchUpdates {
+//            let insertedIndexes = update.insertedIndexes.map { IndexPath(item: $0, section: 0) }
+//            let deletedIndexes = update.deletedIndexes.map { IndexPath(item: $0, section: 0) }
+//            let updatedIndexes = update.updatedIndexes.map { IndexPath(item: $0, section: 0) }
+//            collectionView.insertItems(at: insertedIndexes)
+//            collectionView.insertItems(at: deletedIndexes)
+//            collectionView.insertItems(at: updatedIndexes)
+//            for move in update.movedIndexes {
+//                collectionView.moveItem(at: IndexPath(item: move.oldIndex, section: 0),
+//                                        to: IndexPath(item: move.newIndex, section: 0))
+//            }
+//        }
+//    }
+
+//}
 
 //    @objc private func removeEmoji() {
 //        guard visibleEmoji.count > 0 else { return }
@@ -141,16 +150,23 @@ extension ViewController {
     
     func setNavigationBar() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plus))
-        //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .undo, target: self, action: #selector(undo))
+        
+        let leftButton = UIBarButtonItem(
+            title: NSLocalizedString("Delete All", comment: ""),
+            style: .plain,
+            target: self,
+            action: #selector(undo)
+        )
+        self.navigationItem.leftBarButtonItem = leftButton
     }
     
     @objc func plus() {
-        addEmoji()
+        viewModel.addEmojiMixTapped()
     }
     
-    //    @objc func undo() {
-    //        removeEmoji()
-    //    }
+    @objc func undo() {
+        viewModel.deleteAll()
+    }
     
 }
 
