@@ -156,12 +156,13 @@ extension ViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plus))
         
         let leftButton = UIBarButtonItem(
-            title: NSLocalizedString("Delete All", comment: ""),
+            title: NSLocalizedString("deleteAll", comment: "Text on delete button"),
             style: .plain,
             target: self,
             action: #selector(undo)
         )
         self.navigationItem.leftBarButtonItem = leftButton
+       // self.navigationItem.title = NSLocalizedString("emptyState.title", comment: "Text displayed on empty state")
     }
     
     @objc func plus() {

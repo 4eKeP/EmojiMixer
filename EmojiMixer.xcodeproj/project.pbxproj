@@ -21,6 +21,8 @@
 		849D20E22B37F604005F4576 /* EmojiMixFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D20E12B37F604005F4576 /* EmojiMixFactory.swift */; };
 		849D20E42B37F60E005F4576 /* EmojiMix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D20E32B37F60E005F4576 /* EmojiMix.swift */; };
 		849D20E62B37F62A005F4576 /* UIColorMarshalling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D20E52B37F62A005F4576 /* UIColorMarshalling.swift */; };
+		84A4CA932B7E390B00073764 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 84A4CA922B7E390B00073764 /* Localizable.xcstrings */; };
+		84A4CA952B7E394900073764 /* Localizable2.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84A4CA942B7E394900073764 /* Localizable2.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,10 @@
 		849D20E12B37F604005F4576 /* EmojiMixFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMixFactory.swift; sourceTree = "<group>"; };
 		849D20E32B37F60E005F4576 /* EmojiMix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMix.swift; sourceTree = "<group>"; };
 		849D20E52B37F62A005F4576 /* UIColorMarshalling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorMarshalling.swift; sourceTree = "<group>"; };
+		84A4CA922B7E390B00073764 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		84A4CA942B7E394900073764 /* Localizable2.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable2.strings; sourceTree = "<group>"; };
+		84A4CA962B7F810800073764 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		84A4CA972B7F811200073764 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,7 @@
 				841D61462B4AA06900147736 /* UI */,
 				8425DE612B164AA500FA1FD5 /* SceneDelegate.swift */,
 				8425DE632B164AA500FA1FD5 /* ViewController.swift */,
+				84A4CA912B7E389700073764 /* Resources */,
 				8425DE732B164B8100FA1FD5 /* EmojiCollectionViewCell.swift */,
 				849D20B22B36C3DB005F4576 /* Model.xcdatamodeld */,
 				8425DE682B164AA700FA1FD5 /* Assets.xcassets */,
@@ -105,6 +112,15 @@
 				841D61492B4C1E9200147736 /* ObservableWrapper.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		84A4CA912B7E389700073764 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84A4CA922B7E390B00073764 /* Localizable.xcstrings */,
+				84A4CA942B7E394900073764 /* Localizable2.strings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +165,9 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				de,
+				ar,
 			);
 			mainGroup = 8425DE532B164AA500FA1FD5;
 			productRefGroup = 8425DE5D2B164AA500FA1FD5 /* Products */;
@@ -165,8 +184,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A4CA952B7E394900073764 /* Localizable2.strings in Resources */,
 				8425DE6C2B164AA700FA1FD5 /* LaunchScreen.storyboard in Resources */,
 				8425DE692B164AA700FA1FD5 /* Assets.xcassets in Resources */,
+				84A4CA932B7E390B00073764 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +220,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				8425DE6B2B164AA700FA1FD5 /* Base */,
+				84A4CA962B7F810800073764 /* de */,
+				84A4CA972B7F811200073764 /* ar */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

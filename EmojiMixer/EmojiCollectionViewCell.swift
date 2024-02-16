@@ -57,5 +57,6 @@ final class EmpjiCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
          viewModelEmpjiObserver = nil
         viewModelBackgroundColorObserver = nil
+        
     }
 }
