@@ -23,6 +23,7 @@
 		849D20E62B37F62A005F4576 /* UIColorMarshalling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D20E52B37F62A005F4576 /* UIColorMarshalling.swift */; };
 		84A4CA932B7E390B00073764 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 84A4CA922B7E390B00073764 /* Localizable.xcstrings */; };
 		84A4CA952B7E394900073764 /* Localizable2.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84A4CA942B7E394900073764 /* Localizable2.strings */; };
+		84D366582B84915100BA186C /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 84D366572B84915100BA186C /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		84A4CA942B7E394900073764 /* Localizable2.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable2.strings; sourceTree = "<group>"; };
 		84A4CA962B7F810800073764 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		84A4CA972B7F811200073764 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		84D366572B84915100BA186C /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				8425DE682B164AA700FA1FD5 /* Assets.xcassets */,
 				8425DE6A2B164AA700FA1FD5 /* LaunchScreen.storyboard */,
 				8425DE6D2B164AA700FA1FD5 /* Info.plist */,
+				84D366572B84915100BA186C /* InfoPlist.xcstrings */,
 			);
 			path = EmojiMixer;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84A4CA952B7E394900073764 /* Localizable2.strings in Resources */,
+				84D366582B84915100BA186C /* InfoPlist.xcstrings in Resources */,
 				8425DE6C2B164AA700FA1FD5 /* LaunchScreen.storyboard in Resources */,
 				8425DE692B164AA700FA1FD5 /* Assets.xcassets in Resources */,
 				84A4CA932B7E390B00073764 /* Localizable.xcstrings in Resources */,
