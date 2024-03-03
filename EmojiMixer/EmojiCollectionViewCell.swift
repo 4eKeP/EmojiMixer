@@ -10,6 +10,9 @@ import UIKit
 final class EmpjiCollectionViewCell: UICollectionViewCell {
     let titleLable = UILabel()
     
+    private let colors = Colors()
+    
+    
 //    var viewModel: EmojiMixViewModel! {
 //        didSet {
 //            titleLable.text = viewModel.emojis
@@ -28,7 +31,8 @@ final class EmpjiCollectionViewCell: UICollectionViewCell {
     var viewModel: EmojiMixViewModel! {
         didSet {
             titleLable.text = viewModel.emojis
-            contentView.backgroundColor = viewModel.backgroundColor
+            let backgroundColor = viewModel.backgroundColor
+            contentView.backgroundColor = colors.tintEmojiBackgroundColor(backgroundColor)
         }
     }
     

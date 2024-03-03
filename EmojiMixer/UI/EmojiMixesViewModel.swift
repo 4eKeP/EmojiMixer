@@ -14,6 +14,7 @@ final class EmojiMixesViewModel {
     
     @Observable
     private(set) var emojiMixes: [EmojiMixViewModel] = []
+    
 //    {
 //        didSet {
 //            onChange?()
@@ -23,6 +24,7 @@ final class EmojiMixesViewModel {
     private let emojiMixStore: EmojiMixStore
     private let emojiMixFactory: EmojiMixFactory
     private let uiColorMarshalling = UIColorMarshalling()
+    
     
     convenience init() {
         let emojiMixStore = try! EmojiMixStore(
@@ -42,6 +44,11 @@ final class EmojiMixesViewModel {
     
     func addEmojiMixTapped() {
         let newMix = emojiMixFactory.makeNewMix()
+        try! emojiMixStore.addNewEmojiMix(newMix)
+    }
+    
+    func addFixedEmojiMix() {
+        let newMix = emojiMixFactory.makeNewFixedMix()
         try! emojiMixStore.addNewEmojiMix(newMix)
     }
     

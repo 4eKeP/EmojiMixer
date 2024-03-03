@@ -18,6 +18,12 @@ final class EmojiMixFactory {
         return EmojiMix(emojies: "\(emojies.0)\(emojies.1)\(emojies.2)", backgroundColor: makeColor(emojies))
     }
     
+    func makeNewFixedMix() -> EmojiMix {
+        let emojies = (emojis[0], emojis[1], emojis[2])
+        
+        return EmojiMix(emojies: "\(emojies.0)\(emojies.1)\(emojies.2)", backgroundColor: makeColor(emojies))
+    }
+    
     private func make3RandomEmijes() -> (String, String, String) {
         let first = emojis.randomElement()!
         let second = emojis.randomElement()!

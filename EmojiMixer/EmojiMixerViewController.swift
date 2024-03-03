@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  EmojiMixerViewController.swift
 //  EmojiMixer
 //
 //  Created by admin on 28.11.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class EmojiMixerViewController: UIViewController {
     
     //    private let emojis = [ "🍇", "🍈", "🍉", "🍊", "🍋", "🍌", "🍍", "🥭", "🍎", "🍏", "🍐", "🍒", "🍓", "🫐", "🥝", "🍅", "🫒", "🥥", "🥑", "🍆", "🥔", "🥕", "🌽", "🌶️", "🫑", "🥒", "🥬", "🥦", "🧄", "🧅", "🍄"]
     
@@ -20,6 +20,8 @@ final class ViewController: UIViewController {
    // private var visibleEmoji: [EmojiMix] = []
     
     private let cellIdentifier = "cell"
+    
+    private let colors = Colors()
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -50,6 +52,7 @@ final class ViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        collectionView.backgroundColor = colors.collectionViewBackgroundColor
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -64,7 +67,7 @@ final class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension EmojiMixerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.emojiMixes.count
     }
@@ -94,7 +97,7 @@ extension ViewController: UICollectionViewDataSource {
  //   }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension EmojiMixerViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }
@@ -130,7 +133,7 @@ extension ViewController: UICollectionViewDelegate {
 //    }
 //}
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension EmojiMixerViewController: UICollectionViewDelegateFlowLayout {
     
     // задается рамер ячейки
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -150,7 +153,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK: NavigationBar
 
-extension ViewController {
+extension EmojiMixerViewController {
     
     func setNavigationBar() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plus))

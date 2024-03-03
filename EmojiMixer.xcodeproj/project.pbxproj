@@ -12,10 +12,14 @@
 		841D614A2B4C1E9200147736 /* ObservableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D61492B4C1E9200147736 /* ObservableWrapper.swift */; };
 		8425DE602B164AA500FA1FD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425DE5F2B164AA500FA1FD5 /* AppDelegate.swift */; };
 		8425DE622B164AA500FA1FD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425DE612B164AA500FA1FD5 /* SceneDelegate.swift */; };
-		8425DE642B164AA500FA1FD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425DE632B164AA500FA1FD5 /* ViewController.swift */; };
+		8425DE642B164AA500FA1FD5 /* EmojiMixerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425DE632B164AA500FA1FD5 /* EmojiMixerViewController.swift */; };
 		8425DE692B164AA700FA1FD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8425DE682B164AA700FA1FD5 /* Assets.xcassets */; };
 		8425DE6C2B164AA700FA1FD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8425DE6A2B164AA700FA1FD5 /* LaunchScreen.storyboard */; };
 		8425DE742B164B8100FA1FD5 /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425DE732B164B8100FA1FD5 /* EmojiCollectionViewCell.swift */; };
+		84755CA92B94341000E7A5EC /* EmojiMixerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84755CA82B94341000E7A5EC /* EmojiMixerTests.swift */; };
+		84755CB12B94343600E7A5EC /* InlineSnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 84755CB02B94343600E7A5EC /* InlineSnapshotTesting */; };
+		84755CB32B94343600E7A5EC /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 84755CB22B94343600E7A5EC /* SnapshotTesting */; };
+		84755CB52B943F3F00E7A5EC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84755CB42B943F3F00E7A5EC /* Color.swift */; };
 		849D20B42B36C3DB005F4576 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 849D20B22B36C3DB005F4576 /* Model.xcdatamodeld */; };
 		849D20E02B37F5F4005F4576 /* EmojiMixStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D20DF2B37F5F4005F4576 /* EmojiMixStore.swift */; };
 		849D20E22B37F604005F4576 /* EmojiMixFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D20E12B37F604005F4576 /* EmojiMixFactory.swift */; };
@@ -26,6 +30,16 @@
 		84D366582B84915100BA186C /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 84D366572B84915100BA186C /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		84755CAA2B94341000E7A5EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8425DE542B164AA500FA1FD5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8425DE5B2B164AA500FA1FD5;
+			remoteInfo = EmojiMixer;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		841D61442B4AA06100147736 /* EmojiMixViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMixViewModel.swift; sourceTree = "<group>"; };
 		841D61472B4AD57C00147736 /* EmojiMixesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMixesViewModel.swift; sourceTree = "<group>"; };
@@ -33,11 +47,14 @@
 		8425DE5C2B164AA500FA1FD5 /* EmojiMixer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiMixer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8425DE5F2B164AA500FA1FD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8425DE612B164AA500FA1FD5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8425DE632B164AA500FA1FD5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8425DE632B164AA500FA1FD5 /* EmojiMixerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMixerViewController.swift; sourceTree = "<group>"; };
 		8425DE682B164AA700FA1FD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8425DE6B2B164AA700FA1FD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8425DE6D2B164AA700FA1FD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8425DE732B164B8100FA1FD5 /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
+		84755CA62B94341000E7A5EC /* EmojiMixerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojiMixerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84755CA82B94341000E7A5EC /* EmojiMixerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMixerTests.swift; sourceTree = "<group>"; };
+		84755CB42B943F3F00E7A5EC /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		849D20B32B36C3DB005F4576 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		849D20DF2B37F5F4005F4576 /* EmojiMixStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMixStore.swift; sourceTree = "<group>"; };
 		849D20E12B37F604005F4576 /* EmojiMixFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMixFactory.swift; sourceTree = "<group>"; };
@@ -58,6 +75,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84755CA32B94341000E7A5EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84755CB12B94343600E7A5EC /* InlineSnapshotTesting in Frameworks */,
+				84755CB32B94343600E7A5EC /* SnapshotTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -66,6 +92,7 @@
 			children = (
 				841D61442B4AA06100147736 /* EmojiMixViewModel.swift */,
 				841D61472B4AD57C00147736 /* EmojiMixesViewModel.swift */,
+				84755CB42B943F3F00E7A5EC /* Color.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -74,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				8425DE5E2B164AA500FA1FD5 /* EmojiMixer */,
+				84755CA72B94341000E7A5EC /* EmojiMixerTests */,
 				8425DE5D2B164AA500FA1FD5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				8425DE5C2B164AA500FA1FD5 /* EmojiMixer.app */,
+				84755CA62B94341000E7A5EC /* EmojiMixerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,7 +122,7 @@
 				8425DE5F2B164AA500FA1FD5 /* AppDelegate.swift */,
 				841D61462B4AA06900147736 /* UI */,
 				8425DE612B164AA500FA1FD5 /* SceneDelegate.swift */,
-				8425DE632B164AA500FA1FD5 /* ViewController.swift */,
+				8425DE632B164AA500FA1FD5 /* EmojiMixerViewController.swift */,
 				84A4CA912B7E389700073764 /* Resources */,
 				8425DE732B164B8100FA1FD5 /* EmojiCollectionViewCell.swift */,
 				849D20B22B36C3DB005F4576 /* Model.xcdatamodeld */,
@@ -103,6 +132,14 @@
 				84D366572B84915100BA186C /* InfoPlist.xcstrings */,
 			);
 			path = EmojiMixer;
+			sourceTree = "<group>";
+		};
+		84755CA72B94341000E7A5EC /* EmojiMixerTests */ = {
+			isa = PBXGroup;
+			children = (
+				84755CA82B94341000E7A5EC /* EmojiMixerTests.swift */,
+			);
+			path = EmojiMixerTests;
 			sourceTree = "<group>";
 		};
 		849D20DE2B37F5BF005F4576 /* Services */ = {
@@ -146,6 +183,28 @@
 			productReference = 8425DE5C2B164AA500FA1FD5 /* EmojiMixer.app */;
 			productType = "com.apple.product-type.application";
 		};
+		84755CA52B94341000E7A5EC /* EmojiMixerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84755CAE2B94341000E7A5EC /* Build configuration list for PBXNativeTarget "EmojiMixerTests" */;
+			buildPhases = (
+				84755CA22B94341000E7A5EC /* Sources */,
+				84755CA32B94341000E7A5EC /* Frameworks */,
+				84755CA42B94341000E7A5EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84755CAB2B94341000E7A5EC /* PBXTargetDependency */,
+			);
+			name = EmojiMixerTests;
+			packageProductDependencies = (
+				84755CB02B94343600E7A5EC /* InlineSnapshotTesting */,
+				84755CB22B94343600E7A5EC /* SnapshotTesting */,
+			);
+			productName = EmojiMixerTests;
+			productReference = 84755CA62B94341000E7A5EC /* EmojiMixerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -153,11 +212,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					8425DE5B2B164AA500FA1FD5 = {
 						CreatedOnToolsVersion = 15.0.1;
+					};
+					84755CA52B94341000E7A5EC = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 8425DE5B2B164AA500FA1FD5;
 					};
 				};
 			};
@@ -173,11 +236,15 @@
 				ar,
 			);
 			mainGroup = 8425DE532B164AA500FA1FD5;
+			packageReferences = (
+				84755CAF2B94343600E7A5EC /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = 8425DE5D2B164AA500FA1FD5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8425DE5B2B164AA500FA1FD5 /* EmojiMixer */,
+				84755CA52B94341000E7A5EC /* EmojiMixerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -195,6 +262,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84755CA42B94341000E7A5EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -202,10 +276,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8425DE642B164AA500FA1FD5 /* ViewController.swift in Sources */,
+				8425DE642B164AA500FA1FD5 /* EmojiMixerViewController.swift in Sources */,
 				8425DE602B164AA500FA1FD5 /* AppDelegate.swift in Sources */,
 				841D61482B4AD57C00147736 /* EmojiMixesViewModel.swift in Sources */,
 				849D20B42B36C3DB005F4576 /* Model.xcdatamodeld in Sources */,
+				84755CB52B943F3F00E7A5EC /* Color.swift in Sources */,
 				841D614A2B4C1E9200147736 /* ObservableWrapper.swift in Sources */,
 				849D20E42B37F60E005F4576 /* EmojiMix.swift in Sources */,
 				849D20E02B37F5F4005F4576 /* EmojiMixStore.swift in Sources */,
@@ -217,7 +292,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84755CA22B94341000E7A5EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84755CA92B94341000E7A5EC /* EmojiMixerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84755CAB2B94341000E7A5EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8425DE5B2B164AA500FA1FD5 /* EmojiMixer */;
+			targetProxy = 84755CAA2B94341000E7A5EC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8425DE6A2B164AA700FA1FD5 /* LaunchScreen.storyboard */ = {
@@ -410,6 +501,44 @@
 			};
 			name = Release;
 		};
+		84755CAC2B94341000E7A5EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VHDFTCABKC;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.EgorChekulaev.EmojiMixerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmojiMixer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EmojiMixer";
+			};
+			name = Debug;
+		};
+		84755CAD2B94341000E7A5EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VHDFTCABKC;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.EgorChekulaev.EmojiMixerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmojiMixer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EmojiMixer";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -431,7 +560,40 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		84755CAE2B94341000E7A5EC /* Build configuration list for PBXNativeTarget "EmojiMixerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84755CAC2B94341000E7A5EC /* Debug */,
+				84755CAD2B94341000E7A5EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84755CAF2B94343600E7A5EC /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84755CB02B94343600E7A5EC /* InlineSnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84755CAF2B94343600E7A5EC /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = InlineSnapshotTesting;
+		};
+		84755CB22B94343600E7A5EC /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84755CAF2B94343600E7A5EC /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		849D20B22B36C3DB005F4576 /* Model.xcdatamodeld */ = {
