@@ -25,6 +25,8 @@ final class EmojiMixesViewModel {
     private let emojiMixFactory: EmojiMixFactory
     private let uiColorMarshalling = UIColorMarshalling()
     
+    private let analyticService = AnalyticService()
+    
     
     convenience init() {
         let emojiMixStore = try! EmojiMixStore(
@@ -43,6 +45,7 @@ final class EmojiMixesViewModel {
     }
     
     func addEmojiMixTapped() {
+        analyticService.report(name: "mixes_add", parameters: ["mixes_count" : emojiMixes.count + 1])
         let newMix = emojiMixFactory.makeNewMix()
         try! emojiMixStore.addNewEmojiMix(newMix)
     }
@@ -53,6 +56,7 @@ final class EmojiMixesViewModel {
     }
     
     func deleteAll() {
+        analyticService.report(name: "mixes_delete_all", parameters: ["mixes_count" : emojiMixes.count])
         try! emojiMixStore.deleteAll()
     }
     
